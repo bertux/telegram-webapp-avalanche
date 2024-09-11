@@ -15,11 +15,12 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
       - name: install dependencies
-        run: npm install --legacy-peer-deps
+        run: yarn install
       - name: Build
-        run: npm run build
+        run: yarn build
         env:
           CI: false
+          VITE_THIRDWEB_CLIENT_ID: ${{ secrets.VITE_THIRDWEB_CLIENT_ID }}
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
